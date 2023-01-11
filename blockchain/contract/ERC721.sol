@@ -14,7 +14,7 @@ contract ERC721 is IERC721, IERC721Metadata {
 	mapping(address => uint) private _balances;
 	mapping(uint => address) private _owners;
 	mapping(uint => address) private _tokenApprovals;
-	mapping(address => mapping(address => bool)) private _opertorApprovals;
+	mapping(address => mapping(address => bool)) private _operatorApprovals;
 
 	constructor(string memory _name, string memory _symbol) {
 		name = _name;
@@ -29,7 +29,7 @@ contract ERC721 is IERC721, IERC721Metadata {
 	}
 
 	function ownerOf(uint _tokenId) public override view returns (address) {
-		address owner = _owners[tokenId];
+		address owner = _owners[_tokenId];
 		require(owner != address(0), "ERC721 : owner query for the nonexistent token");
 		
 		return _owners[_tokenId];
@@ -58,7 +58,7 @@ contract ERC721 is IERC721, IERC721Metadata {
 	}
 
 	function isApprovedForAll(address _owner, address _operator) public override view returns (bool) {
-		return _operatorApprovals[_owner][_opertor];
+		return _operatorApprovals[_owner][_operator];
 	}
 
 	function _isApprovedOrOwner(address _spender, uint _tokenId) private view returns (bool) {
@@ -70,7 +70,7 @@ contract ERC721 is IERC721, IERC721Metadata {
 
 	function transferFrom(address _from, address _to, uint _tokenId) external override {
 		require(_isApprovedOrOwner(_from, _tokenId));
-		require(_from != _to)
+		require(_from != _to);
 
 		_beforeTokenTransfer(_from, _to, _tokenId);
 	
@@ -99,3 +99,4 @@ contract ERC721 is IERC721, IERC721Metadata {
 	function _beforeTokenTransfer(address _from, address _to, uint _token) internal virtual {}
 
 }
+

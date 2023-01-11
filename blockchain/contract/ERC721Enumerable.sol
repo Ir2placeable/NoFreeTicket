@@ -9,28 +9,28 @@ contract ERC721Enumberable is ERC721 {
 	
 	uint[] private _allTokens;
 	
-	mapping(address => mappint(uint => uint)) private _ownedTokens;
+	mapping(address => mapping(uint => uint)) private _ownedTokens;
 	mapping(uint => uint) private _ownedTokensIndex;
 
-	contructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {}
+	constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {}
 
 	function mint(address _to) public {
 		_mint(_to, _allTokens.length);
 	}
 
 	function _beforeTokenTransfer(address _from, address _to, uint _tokenId) internal override {
-		if (_from == address(0) {
+		if (_from == address(0)) {
 			_allTokens.push(_allTokens.length);
 		}
 		else {
-			uint lastestTokenIndex = ERC721.balanceOf(_from) - 1;
+			uint latestTokenIndex = ERC721.balanceOf(_from) - 1;
 			uint tokenIndex = _ownedTokensIndex[_tokenId];
 
 			if (tokenIndex != latestTokenIndex) {
 				uint latestTokenId = _ownedTokens[_from][latestTokenIndex];
 		
-				_ownedTokens[_fro][tokenIndex] = latestTokenId;
-				_ownedTokensIndex[lastestTokenId] = tokenIndex;
+				_ownedTokens[_from][tokenIndex] = latestTokenId;
+				_ownedTokensIndex[latestTokenId] = tokenIndex;
 			}
 			
 			delete _ownedTokens[_from][latestTokenIndex];
