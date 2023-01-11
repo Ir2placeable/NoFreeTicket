@@ -1,7 +1,7 @@
 /* interface IERC721Metadata */
 
 // SPDX-License-Identifier : MIT
-pragma solidty ^0.8.15;
+pragma solidity ^0.8.15;
 
 interface IERC721Metadata {
 
