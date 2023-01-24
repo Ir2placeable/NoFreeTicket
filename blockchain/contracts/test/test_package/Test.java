@@ -1,4 +1,4 @@
-package .;
+package test_package;
 
 import java.math.BigInteger;
 import java.util.Arrays;
