@@ -1,0 +1,18 @@
+package project.nofreeticket.mainserver.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class MainServerController {
+
+//    private class Metamask {
+//
+//    }
+//    @GetMapping("address")
+//    public String getAddressFromMetamask(Model model) {
+//
+//        model.addAttribute("address", )
+//    }
+}
